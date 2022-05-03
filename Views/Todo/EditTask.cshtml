@@ -1,0 +1,40 @@
+﻿@model Todo;
+@{
+    ViewData["Title"] = "Edit Task";
+}
+
+<form method="post" asp-action="EditTask">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-dark">Edit Task</h2>
+            <hr />
+        </div>
+        <div class="mb-3">
+            <label asp-for="TaskName"></label>
+            <input asp-for="TaskName" class="form-control mt-2"/>
+            <span asp-validation-for="TaskName" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="TaskData"></label>
+            <input asp-for="TaskData" class="form-control mt-2"/>
+            <span asp-validation-for="TaskData" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="TaskStatus"></label><br/>
+            <input asp-for="TaskStatus" class="mt-3" type="radio" value="Incomplete"/><label>Incomplete</label><br/>
+            <input asp-for="TaskStatus" class="mt-2" type="radio" value="Doing"/><label>Doing</label><br/>
+            <input asp-for="TaskStatus" class="mt-2" type="radio" value="Complete"/><label>Complete</label><br/>
+            <span asp-validation-for="TaskStatus" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-success" style="width:150px">Update</button>
+        <a asp-controller="Todo" asp-action="Index" class="btn btn-secondary" style="width:150px">
+            Back to list
+        </a>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial"/>
+    }
+}
